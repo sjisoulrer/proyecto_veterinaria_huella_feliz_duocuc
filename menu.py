@@ -1,5 +1,8 @@
 import funciones
 
+mascotas = {}
+atenciones = []
+
 while True:
     print("Bienvenido a Huella Feliz")
     print("Tu veterinaria de confianza")
