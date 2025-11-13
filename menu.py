@@ -15,13 +15,13 @@ while True:
     op = input("Seleccione una opcion: ")
         
     if op == "1":
-        funciones.registrar_pacientes()
+        funciones.registrar_mascota()
     if op == "2":
-        funciones.modificar_pacientes()
+        funciones.actualizar_mascota()
     if op == "3":
-        funciones.eliminar_pacientes()
+        funciones.eliminar_mascota()
     if op == "4":
-        funciones.listar_pacientes()
+        funciones.listar_mascota()
     if op == "5":
         funciones.registrar_atencion()
     if op == "6":
