@@ -21,7 +21,7 @@ def registrar_mascota():
 
 
 def actualizar_mascota():
-    clave = input("Ingrese rut + nombre de mascota (ejemplo: 21943166-k_chico): ").lower()
+    clave = input("Ingrese rut + nombre de mascota (ejemplo: 21943166-k-chico): ").lower()
     if clave not in mascotas:
         print("La mascota no se encuentra registrada")
         return
@@ -31,7 +31,7 @@ def actualizar_mascota():
     print("Mascota actualizada")
 
 def eliminar_mascota():
-    eliminar = input("Ingrese rut + nombre de mascota (ej: 21943166-k_firulais):  ").lower().strip()
+    eliminar = input("Ingrese rut + nombre de mascota (ej: 21943166-k-firulais):  ").lower().strip()
     
     if eliminar in mascotas:
         del mascotas[eliminar]
