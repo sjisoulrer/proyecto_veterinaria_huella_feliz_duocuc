@@ -91,4 +91,49 @@ def reporte_gastos():
             total += atencion["costo"]
             
     print(f"El rut:{rut} tiene un gasto total de: ${total:.2f}")
+    
+def exportar_datos_csv():
+    with open("mascotas.csv", mode="w", newline="") as archivo_mascotas:
+        campos = ["rut", "nombre", "especie", "edad"]
+        escritor = csv.DictWriter(archivo_mascotas, fieldnames=campos)
+        escritor.writeheader()
+        for datos in mascotas.values():
+            escritor.writerow(datos)
+    
+    with open("atenciones.csv", mode="w", newline="") as archivo_atenciones:
+        campos = ["clave", "fecha", "descripcion", "costo"]
+        escritor = csv.DictWriter(archivo_atenciones, fieldnames=campos)
+        escritor.writeheader()
+        for atencion in atenciones:
+            escritor.writerow(atencion)
+    
+    print("Datos exportados a mascotas.csv y atenciones.csv")   
+    
+def importar_datos_csv():
+    try:
+        with open("mascotas.csv", mode="r") as archivo_mascotas:
+            lector = csv.DictReader(archivo_mascotas)
+            for fila in lector:
+                clave = fila["rut"] + "-" + fila["nombre"].lower()
+                mascotas[clave] = {
+                    "rut": fila["rut"],
+                    "nombre": fila["nombre"],
+                    "especie": fila["especie"],
+                    "edad": fila["edad"]
+                }
+        
+        with open("atenciones.csv", mode="r") as archivo_atenciones:
+            lector = csv.DictReader(archivo_atenciones)
+            for fila in lector:
+                atencion = {
+                    "clave": fila["clave"],
+                    "fecha": fila["fecha"],
+                    "descripcion": fila["descripcion"],
+                    "costo": float(fila["costo"])
+                }
+                atenciones.append(atencion)
+        
+        print("Datos importados exitosamente desde mascotas.csv y atenciones.csv")
+    except FileNotFoundError:
+        print("No se encontraron los archivos mascotas.csv o atenciones.csv")
 
